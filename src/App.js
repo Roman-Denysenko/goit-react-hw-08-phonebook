@@ -1,15 +1,23 @@
-import React from 'react';
+import React,{Component} from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import Contacts from './views/contacts';
 import Registration from './views/registration';
 import Login from './views/login';
 import Home from './views/home';
 import Header from './components/header';
+import { getCurrentUser } from './redux/auth/auth-operations';
+import { fetchContacts } from './redux/contacts/operations';
 
-const App = () => {
-    
-    return (
+class App extends Component {
+  componentDidMount() {
+    this.props.onGetCurrentUser();
+    this.props.onGetContacts();
+  }
+  
+   render() {
+      return (
       <>
         <Header/>
         <Switch>
@@ -20,7 +28,13 @@ const App = () => {
         </Switch>
       </>
     );
-  }
+    }
+}
+  
+const mapDispatchToProps =  {
+  onGetCurrentUser: getCurrentUser,
+  onGetContacts:fetchContacts,
+};
 
-export default App;
+export default connect(null, mapDispatchToProps)(App);
 

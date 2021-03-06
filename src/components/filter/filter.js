@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { filter } from '../../redux/actions';
-import selectors from '../../redux/selectors';
+import { filter } from '../../redux/contacts/actions';
+import selectors from '../../redux/contacts/selectors';
 
 import s from './Filter.module.css';
 

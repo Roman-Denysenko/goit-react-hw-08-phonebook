@@ -1,11 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-const UserMenu = ({mail,onLogout,avatar}) => {
+import authSelectors from '../../redux/auth/auth-selectors'; 
+import defaultImg from './defImg.png';
+import { logOut } from '../../redux/auth/auth-operations';
+
+const UserMenu = ({ email, onLogout, avatar }) => {
+   
     return (
          <div >
     <img src={avatar} alt="" width="32" />
-    <span >Welcome, {mail}</span>
+    <span >Welcome: {email}</span>
     <button type="button" onClick={onLogout}>
       Logout
     </button>
@@ -14,7 +20,20 @@ const UserMenu = ({mail,onLogout,avatar}) => {
 }
 
 UserMenu.propType = {
-
+    mail: PropTypes.string,
+    onLogout: PropTypes.func,
+    avatar: PropTypes.string,
 };
 
-export default UserMenu;
+const mapStateToProps = state => ({
+    email: authSelectors.getAuthEmail(state),
+    avatar: defaultImg,
+    
+});
+
+const mapDispatchToProps =  ({
+  onLogout:logOut,
+});
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(UserMenu);

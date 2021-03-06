@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { connect } from 'react-redux';
-import { deleteContact } from '../../redux/operations';
-import selectors from '../../redux/selectors';
+import { deleteContact } from '../../redux/contacts/operations';
+import selectors from '../../redux/contacts/selectors';
 
 import s from './ContactList.module.css';
 
