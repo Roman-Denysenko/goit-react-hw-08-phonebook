@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Navigation from '../navigation';
 import AuthNav from '../authNav';
 import UserMenu from '../userMenu';
-import authSelectors from '../../redux/auth/auth-selectors';
+import {getAuthenticated} from '../../redux/auth/auth-selectors';
 
 const Header = ({ Authorization }) => {
     
@@ -23,7 +23,7 @@ Header.propType = {
 };
 
 const mapStateToProps = state => ({
-    Authorization: authSelectors.getAuthToken(state),
+    Authorization: getAuthenticated(state),
 })
 
 export default connect(mapStateToProps)(Header);

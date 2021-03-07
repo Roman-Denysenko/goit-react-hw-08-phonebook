@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import { register } from '../../redux/auth/auth-operations';
 
 class Registration extends Component {
+
     state = {
-        email: '',
         name: '',
-        password:''
+        email: '',
+        password: '',
     }
 
     handleChange = (e) => {

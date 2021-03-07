@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import authSelectors from '../../redux/auth/auth-selectors'; 
+import {getAuthEmail} from '../../redux/auth/auth-selectors'; 
 import defaultImg from './defImg.png';
 import { logOut } from '../../redux/auth/auth-operations';
 
@@ -26,7 +26,7 @@ UserMenu.propType = {
 };
 
 const mapStateToProps = state => ({
-    email: authSelectors.getAuthEmail(state),
+    email: getAuthEmail(state),
     avatar: defaultImg,
     
 });
