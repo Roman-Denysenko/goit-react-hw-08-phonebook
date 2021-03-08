@@ -1,6 +1,7 @@
 import React,{Component, lazy, Suspense} from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
+import s from './App.module.css';
 
 import routes from './routes';
 import Header from './components/header';
@@ -20,7 +21,7 @@ class App extends Component {
   
    render() {
       return (
-      <>
+      <div className={s.container}>
           <Header />
           <Suspense fallback={<p>Loading...</p>}>
         <Switch>
@@ -30,7 +31,7 @@ class App extends Component {
            <PublicRoute path={routes.registration} restricted redirectTo={routes.contacts} component={Registration} />
             </Switch>
             </Suspense>
-      </>
+      </div >
     );
     }
 }
