@@ -33,8 +33,8 @@ class Registration extends Component {
         return (
             <div>
                 <h1>Registration</h1>
-                <form
-                    className={s.form}
+            <form
+                className={s.form}
                 autoComplete='off'
                 onSubmit={this.handleSubmit}
             > 
@@ -46,7 +46,7 @@ class Registration extends Component {
                     value={name}
                     onChange={this.handleChange}/>
                 </label >
-               <label className={s.label}> Mail
+                <label className={s.label}> Mail
                     <input
                     className={s.input}
                     type='email'
@@ -63,8 +63,8 @@ class Registration extends Component {
                     onChange={this.handleChange}/>
                 </label>
                 <button type='submit' className={s.button}>Submit</button>
-                </form>
-                </div>
+            </form>
+            </div>
         )
     }
 }

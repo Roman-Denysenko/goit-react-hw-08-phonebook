@@ -14,10 +14,10 @@ const ContactList = ({ items,visibleContacts, onDelete }) => {
     return null;
   }
 
-  const ContactItem = ({ id, name, number }) => {
-    if (name === '' || number === '') {
-      return null;
-    }
+const ContactItem = ({ id, name, number }) => {
+  if (name === '' || number === '') {
+    return null;
+  }
     return (
       <CSSTransition key={id} timeout={250} classNames={s}>
         <li  className={s.item}>
@@ -30,7 +30,7 @@ const ContactList = ({ items,visibleContacts, onDelete }) => {
         >
             Delete
         </button>{' '}
-          </li>
+        </li>
       </CSSTransition>
     );
   };
@@ -56,7 +56,7 @@ const mapStateToProps = state => ({
 });
 
  const mapDispatchToProps = dispatch => ({
-   onDelete: (id) => dispatch(deleteContact(id))
+  onDelete: (id) => dispatch(deleteContact(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactList) ;

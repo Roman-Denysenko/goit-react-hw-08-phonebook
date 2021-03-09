@@ -10,13 +10,13 @@ import { logOut } from '../../redux/auth/auth-operations';
 const UserMenu = ({ email, onLogout, avatar }) => {
    
     return (
-         <div className={s.container}>
-    <img src={avatar} alt="" width="32" className={s.element} />
-    <span className={s.element} >Welcome: {email}</span>
-    <button type="button" onClick={onLogout} className={s.element}>
-      Logout
-    </button>
-  </div>
+        <div className={s.container}>
+          <img src={avatar} alt="" width="32" className={s.element} />
+          <span className={s.element} >Welcome: {email}</span>
+          <button type="button" onClick={onLogout} className={s.element}>
+           Logout
+          </button>
+        </div>
     )
 }
 
@@ -27,8 +27,8 @@ UserMenu.propType = {
 };
 
 const mapStateToProps = state => ({
-    email: getAuthEmail(state),
-    avatar: defaultImg,
+  email: getAuthEmail(state),
+  avatar: defaultImg,
     
 });
 

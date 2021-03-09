@@ -24,13 +24,13 @@ class App extends Component {
       <div className={s.container}>
           <Header />
           <Suspense fallback={<p>Loading...</p>}>
-        <Switch>
+          <Switch>
            <Route exact  path={routes.home} component={Home} />
            <PrivateRoute path={routes.contacts} redirectTo={routes.login} component={Contacts} />
            <PublicRoute path={routes.login} restricted redirectTo={routes.contacts} component={Login} />
            <PublicRoute path={routes.registration} restricted redirectTo={routes.contacts} component={Registration} />
-            </Switch>
-            </Suspense>
+          </Switch>
+          </Suspense>
       </div >
     );
     }

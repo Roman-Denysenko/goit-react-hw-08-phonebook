@@ -14,7 +14,6 @@ const Navigation = () => {
 }
 
 Navigation.propType = {
-
 };
 
 export default Navigation;

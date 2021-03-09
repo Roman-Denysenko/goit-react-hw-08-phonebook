@@ -4,6 +4,7 @@ import { logIn } from '../../redux/auth/auth-operations';
 import s from './Login.module.css';
 
 class Login extends Component {
+
     state = {
         email: '',
         password:''
@@ -52,8 +53,8 @@ class Login extends Component {
                     onChange={this.handleChange}/>
                 </label>
                 <button type='submit' className={s.button}>Submit</button>
-                </form>
-                </div>
+            </form>
+            </div>
         )
     }
 }

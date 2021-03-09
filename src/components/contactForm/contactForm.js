@@ -74,7 +74,8 @@ class ContactForm extends Component {
       <div className={s.formContainer}>
         <CSSTransition in={warning} timeout={250} classNames={s} unmountOnExit>
            <Warning name={name} />
-        </CSSTransition>  
+        </CSSTransition>
+        
       <form onSubmit={this.handleSubmitForm} className={s.form}>
         <label className={s.label}>
           Name
@@ -100,8 +101,8 @@ class ContactForm extends Component {
         <button className={s.button} type="submit">
           Add contact
         </button>
-        </form>
-        </div>
+      </form>
+      </div>
     );
   }
 }

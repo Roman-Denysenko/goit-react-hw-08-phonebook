@@ -19,10 +19,12 @@ const getFilterValue = state => {
 
 const getVisibleContacts =  createSelector(
     [getContactsItems, getFilterValue],
+    
     (items,filter)=>{
-    const normalizedFilter = filter.toLowerCase();  
-   return( items.filter(el =>
-      el.name.toLowerCase().includes(normalizedFilter),
+    const normalizedFilter = filter.toLowerCase();
+        
+    return( items.filter(el =>
+    el.name.toLowerCase().includes(normalizedFilter),
   ))}
 )
 
