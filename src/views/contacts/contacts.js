@@ -12,41 +12,49 @@ import Filter from '../../components/filter';
 
 const Contacts = ({ items, loading }) => {
   fetchContacts();
-    
-    return (
-      <div className={s.container}>
-        <CSSTransition in={true} appear={true}classNames={s} timeout={500} unmountOnExit>
-          <h1>Phonebook</h1>
-        </CSSTransition>
 
-        <ContactForm />
-        {loading&&<p>Loading...</p>} 
+  return (
+    <div className={s.container}>
+      <CSSTransition
+        in={true}
+        appear={true}
+        classNames={s}
+        timeout={500}
+        unmountOnExit
+      >
+        <h1>Phonebook</h1>
+      </CSSTransition>
 
-       <CSSTransition in={items.length>0} timeout={250} classNames={s} unmountOnExit>
-          <div>
-            <h2>Contacts</h2>
-            <Filter />
-        <ContactList
-            />
-            </div>
-          </CSSTransition>
-      </div>
-    );
-  }
+      <ContactForm />
+      {loading && <p>Loading...</p>}
+
+      <CSSTransition
+        in={items.length > 0}
+        timeout={250}
+        classNames={s}
+        unmountOnExit
+      >
+        <div>
+          <h2>Contacts</h2>
+          <Filter />
+          <ContactList />
+        </div>
+      </CSSTransition>
+    </div>
+  );
+};
 
 Contacts.propTypes = {
   items: PropTypes.array,
 };
 
-
 const mapStateToProps = state => ({
   items: selectors.getContactsItems(state),
-  loading:selectors.getLoading(state),
+  loading: selectors.getLoading(state),
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchContacts:dispatch(fetchContacts()),
+  fetchContacts: dispatch(fetchContacts()),
 });
 
-export default connect(mapStateToProps,mapDispatchToProps)(Contacts);
-
+export default connect(mapStateToProps, mapDispatchToProps)(Contacts);

@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 import { addContact } from '../../redux/contacts/operations';
 import selectors from '../../redux/contacts/selectors';
 
-
 import s from './ContactForm.module.css';
 
 class ContactForm extends Component {
@@ -21,37 +20,37 @@ class ContactForm extends Component {
   state = {
     name: '',
     number: '',
-    warning:false,
+    warning: false,
   };
 
   handleInputName = e => {
-
     const { name, value } = e.target;
     this.setState({
       [name]: value,
-      warning:false});
+      warning: false,
+    });
     this.handleDeleteContactFromFormState();
   };
 
   handleSubmitForm = e => {
     e.preventDefault();
     const { name, number } = this.state;
-    const  contacts = this.props.contacts.items;
-    const contactItem = { id: uuidv4(), name, number};
+    const contacts = this.props.contacts.items;
+    const contactItem = { id: uuidv4(), name, number };
 
     if (name === '' || number === '') {
       return;
     }
 
     if (contacts.find(item => name === item.name)) {
-      this.setState({warning: true})
+      this.setState({ warning: true });
       return;
     } else {
       this.setState({
-        warning:false,
+        warning: false,
       });
     }
-    this.props.onAdd(contactItem)
+    this.props.onAdd(contactItem);
     this.resetInput();
   };
 
@@ -68,40 +67,39 @@ class ContactForm extends Component {
   };
 
   render() {
-  
-    const { name, number,warning } = this.state;
+    const { name, number, warning } = this.state;
     return (
       <div className={s.formContainer}>
         <CSSTransition in={warning} timeout={250} classNames={s} unmountOnExit>
-           <Warning name={name} />
+          <Warning name={name} />
         </CSSTransition>
-        
-      <form onSubmit={this.handleSubmitForm} className={s.form}>
-        <label className={s.label}>
-          Name
-          <input
-            className={s.input}
-            type="text"
-            name="name"
-            value={name}
-            onChange={this.handleInputName}
-          ></input>
-        </label>
 
-        <label className={s.label}>
-          Number
-          <input
-            className={s.input}
-            type="tel"
-            name="number"
-            value={number}
-            onChange={this.handleInputName}
-          ></input>
-        </label>
-        <button className={s.button} type="submit">
-          Add contact
-        </button>
-      </form>
+        <form onSubmit={this.handleSubmitForm} className={s.form}>
+          <label className={s.label}>
+            Name
+            <input
+              className={s.input}
+              type="text"
+              name="name"
+              value={name}
+              onChange={this.handleInputName}
+            ></input>
+          </label>
+
+          <label className={s.label}>
+            Number
+            <input
+              className={s.input}
+              type="tel"
+              name="number"
+              value={number}
+              onChange={this.handleInputName}
+            ></input>
+          </label>
+          <button className={s.button} type="submit">
+            Add contact
+          </button>
+        </form>
       </div>
     );
   }
@@ -112,7 +110,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-   onAdd: item => dispatch(addContact(item)),
+  onAdd: item => dispatch(addContact(item)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ContactForm)  ;
+export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);

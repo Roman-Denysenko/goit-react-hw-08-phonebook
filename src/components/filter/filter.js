@@ -6,36 +6,34 @@ import selectors from '../../redux/contacts/selectors';
 
 import s from './Filter.module.css';
 
-const Filter =({value,onFilter })=> {
-   
-    return (
-      <>
-        <label className={s.label}>
-          Find contact by name
-          <input
-            className={s.input}
-            type="text"
-            name="filter"
-            value={value}
-            onChange={onFilter}
-          ></input>
-        </label>
-      </>
-    );
-}
-  
+const Filter = ({ value, onFilter }) => {
+  return (
+    <>
+      <label className={s.label}>
+        Find contact by name
+        <input
+          className={s.input}
+          type="text"
+          name="filter"
+          value={value}
+          onChange={onFilter}
+        ></input>
+      </label>
+    </>
+  );
+};
+
 Filter.propTypes = {
   value: PropTypes.string,
   onFilter: PropTypes.func,
 };
-
 
 const mapStateToProps = state => ({
   value: selectors.getFilterValue(state),
 });
 
 const mapDispatchToProps = dispatch => ({
-  onFilter: e=> dispatch(filter(e.target.value)),
+  onFilter: e => dispatch(filter(e.target.value)),
 });
 
-export default connect(mapStateToProps,mapDispatchToProps)(Filter) ;
+export default connect(mapStateToProps, mapDispatchToProps)(Filter);

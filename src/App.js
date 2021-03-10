@@ -1,4 +1,4 @@
-import React,{Component, lazy, Suspense} from 'react';
+import React, { Component, lazy, Suspense } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import s from './App.module.css';
@@ -18,27 +18,40 @@ class App extends Component {
   componentDidMount() {
     this.props.onGetCurrentUser();
   }
-  
-   render() {
-      return (
+
+  render() {
+    return (
       <div className={s.container}>
-          <Header />
-          <Suspense fallback={<p>Loading...</p>}>
+        <Header />
+        <Suspense fallback={<p>Loading...</p>}>
           <Switch>
-           <Route exact  path={routes.home} component={Home} />
-           <PrivateRoute path={routes.contacts} redirectTo={routes.login} component={Contacts} />
-           <PublicRoute path={routes.login} restricted redirectTo={routes.contacts} component={Login} />
-           <PublicRoute path={routes.registration} restricted redirectTo={routes.contacts} component={Registration} />
+            <Route exact path={routes.home} component={Home} />
+            <PrivateRoute
+              path={routes.contacts}
+              redirectTo={routes.login}
+              component={Contacts}
+            />
+            <PublicRoute
+              path={routes.login}
+              restricted
+              redirectTo={routes.contacts}
+              component={Login}
+            />
+            <PublicRoute
+              path={routes.registration}
+              restricted
+              redirectTo={routes.contacts}
+              component={Registration}
+            />
           </Switch>
-          </Suspense>
-      </div >
+        </Suspense>
+      </div>
     );
-    }
+  }
 }
-  
-const mapDispatchToProps =  {
+
+const mapDispatchToProps = {
   onGetCurrentUser: getCurrentUser,
 };
 
 export default connect(null, mapDispatchToProps)(App);
-
